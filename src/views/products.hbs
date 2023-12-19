@@ -1,0 +1,52 @@
+<h1 class="text-center text-bg-dark ">Productos</h1>
+
+{{!-- Mensaje de Bienvenida --}}
+<div id="messageContainer" class="text-center text-bg-dark text-warning  "></div>
+
+<div class="row">
+    {{#each payload}}
+    <div class="col-md-4 col-sm-6">
+        <div class="card text-center">
+            <img src="{{this.thumbnail}}" class="img-fluid card-img-top m-auto img-thumbnail " style="width: 75%">
+            <h1 class="card-title">{{this.title}}</h1>
+            <h4 class="card-text">Precio: {{this.price}}</h4>
+            <h6 class="card-text">Descripción: {{this.description}}</h6>
+            <h6 class="card-text">Categoría: {{this.category}}</h6>
+            <h6 class="card-text">Stock: {{this.stock}}</h6>
+            <h6 class="card-text">Código: {{this.code}}</h6>
+            <button id="agregar" onclick="addToCart(`{{this._id}}`)" class="btn btn-success m-auto">Agregar Al carrito</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<br>
+<div class="text-center">
+    <a href="http://localhost:8080/cart"><button class="btn btn-warning m-auto">Ver Carrito</button></a>
+    <br><br>
+    {{#if prevLink}}
+        {{#if nextLink}}
+            <a href="{{prevLink}}" class="btn btn-danger">Página Anterior</a>
+            <a href="{{nextLink}}" class="btn btn-primary">Siguiente Página</a>
+        {{else}}
+            <a href="{{prevLink}}" class="btn btn-danger">Página Anterior</a>
+        {{/if}}
+    {{else}}
+        <a href="{{nextLink}}" class="btn btn-primary">Siguiente Página</a>
+    {{/if}}
+</div>
+
+    {{!-- Mensaje de Bienvenida --}}
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get("message");
+
+        if (message) {
+            const messageContainer = document.getElementById("messageContainer")
+            const messageElement = document.createElement("div");
+            messageElement.textContent = message;
+            messageElement.classList.add("welcome-message");
+            messageContainer.appendChild(messageElement);
+        }
+    </script>
+<script src="/js/products.js"></script>
+

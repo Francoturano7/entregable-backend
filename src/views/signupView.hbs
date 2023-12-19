@@ -1,0 +1,28 @@
+<h1 class="text-center">Pagina Registro</h1>
+
+<div style="color: red">
+    {{error}}
+</div>
+
+<div class="text-center">
+    <form method="post" action="/api/sessions/signup">
+        <input type="text" name="first_name" placeholder="Ingresa tu nombre..."/>
+        <br>
+        <input type="text" name="last_name" placeholder="Ingresa tu apellido..."/>
+        <br>
+        <input type="text" name="age" placeholder="Ingresa tu edad..."/>
+        <br>
+        <input type="email" name="email" placeholder="Ingresa tu email..."/>
+        <br>
+        <input type="password" name="password" placeholder="Ingresa tu password..."/>
+        <br>
+        <button class="btn btn-success m-auto"> Registrarse </button>
+    </form>
+
+    {{!-- Para iniciar con Github --}}
+    <a href="/api/sessions/signup-github">
+        <button class="btn btn-dark">
+            Registrarse con Github
+        </button>
+    </a>
+</div>

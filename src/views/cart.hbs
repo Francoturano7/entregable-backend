@@ -1,0 +1,26 @@
+<h1 class="text-bg-dark text-center">Productos en Carrito</h1>
+
+<div class="row justify-content-center">
+    {{#if products.length}}
+        {{#each products}}
+            <div class="col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <img src="{{this.productId.thumbnail}}" class="img-fluid card-img-top m-auto img-thumbnail" style="width: 75%">
+                    <h1 class="card-title">{{this.productId.title}}</h1>
+                    <h4 class="card-text">Precio: {{this.productId.price}}</h4>
+                    <h4 class="card-text">Cantidad: {{this.quantity}}</h4>
+
+                    <button onclick="deleteToCart('{{this.productId._id}}')" class="btn btn-success m-auto">Eliminar del carrito</button>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <h1 class="text-center text-danger ">No hay productos en el carrito</h1>
+    {{/if}}
+
+    <div class="m-auto text-center text-decoration-none">
+        <button class="btn btn-warning"><a href="http://localhost:8080">Volver Atrás</a></button>
+    </div>
+</div>
+
+<script src="/js/products.js"></script>
